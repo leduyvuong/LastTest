@@ -4,13 +4,21 @@
             <ul class="section menu">
                
 				
-                
-                <li><a class="menuitem">Category Option</a>
+                <li><a class="menuitem">Year Sales</a>
                     <ul class="submenu">
-                        <li><a href="sales">Add Category</a> </li>
-                        <li><a href="typeList">Category List</a> </li>
+                      
+							<li><a href="saleY">2020</a></li>
+						
                     </ul>
                 </li>
+                <li><a class="menuitem">Month Sales</a>
+                    <ul class="submenu">
+                       <c:forEach var = "m" begin="1" end="12">
+							<li><a href="saleM?month=${m}"> ${m}</a></li>
+						</c:forEach>
+                    </ul>
+                </li>
+                
                 <li><a class="menuitem">Product Option</a>
                     <ul class="submenu">
                         <li><a href="productAdd">Add Product</a> </li>

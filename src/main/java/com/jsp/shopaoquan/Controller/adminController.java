@@ -149,14 +149,30 @@ public class adminController {
 	}
 	@RequestMapping("/saleM")
 	public String saleM(Model model,@RequestParam("month")int month) {
-		List<orderr> list = orderService.findAll(month);
+		List<orderr> list = orderService.findM(month);
+		float sub = 0;
+		for (orderr or : list) {
+			sub += or.getTotal();
+		}
+		
+		model.addAttribute("sub",sub);
 		model.addAttribute("list",list);
 		return "admin/sales";
 	}
-	@RequestMapping("/saleQ")
-	public String saleQ(Model model,@RequestParam("quarter")int quarter) {
-		List<orderr> list = orderService.findQA(quarter);
-		model.addAttribute("list",list);
+	@RequestMapping("/saleY")
+	public String saleQ(Model model) {
+		HashMap<Integer, Float> result = new HashMap<Integer, Float>();
+		for (int i = 1; i <= 12; i ++) {
+			List<orderr> list = orderService.findM(i);
+			float sub = 0;
+			for (orderr or : list) {
+				sub += or.getTotal();
+			}
+			result.put(i, sub);
+		}
+		orderr or = new orderr();
+		model.addAttribute("ord", or);
+		model.addAttribute("result", result);
 		return "admin/sales";
 	}
 }

@@ -4,11 +4,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<%@include file="../sources/head" %></head>
 </head>
 <body>
-	Check MAIL ĐỂ XÁC NHẬN
-	<img src='<c:url value="/resources/img/products/${image }" ></c:url>' alt="">
+<%@include file="../sources/header" %>
+	<h3 style="height: 200px">Vui lòng vào mail để xác nhận đơn hàng</h1>
+<!----footer----->
+<%@include file="../sources/footer" %>
+<!----js for MenuToggle()----->
+<script>
+        var MenuItems = document.getElementById("MenuItems");
+        MenuItems.style.maxHeight = "0px";
+
+        function menuToggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px";
+            } else {
+                MenuItems.style.maxHeight = "0px";
+            }
+        }
+</script>	
 </body>
 </html>

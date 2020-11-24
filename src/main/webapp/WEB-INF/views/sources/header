@@ -25,9 +25,7 @@
                         <li>
                             <a href="about">About</a>
                         </li>
-                        <li>
-                            <a href="">Contract</a>
-                        </li>
+                       
                         <c:if test="${session == null }">
                         <li>
                             <a href="login">Login</a>

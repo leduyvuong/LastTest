@@ -1,6 +1,8 @@
 package com.jsp.shopaoquan.Service;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -17,8 +19,8 @@ import com.jsp.shopaoquan.Entity.orderr;
 public class orderService {
 	@Autowired
 	private orderDAO orderDAO;
-	public List<orderr> findAll(int month){
-		return orderDAO.findAll(month);
+	public List<orderr> findAll(){
+		return orderDAO.findAll();
 	}
 	public orderr findByID(int id) {
 		return orderDAO.findbyID(id);
@@ -51,7 +53,13 @@ public class orderService {
 		}
 		return descrip;
 	}
-	public List<orderr> findQA(int quarter) {
-		return orderDAO.findQA(quarter);
+	public List<orderr> findM(int month){
+		return orderDAO.findM(month);
+	}
+	public HashMap<Integer, Float> salesY(){
+		return orderDAO.salesY();
+	}
+	public String formatVND(float price) {
+		return orderDAO.formatVND(price);
 	}
 }

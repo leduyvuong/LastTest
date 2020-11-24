@@ -17,8 +17,8 @@
             <table class="data display datatable" id="example">
 			
 				<tr>
-					<th>Post Title</th>
-					<th>Description</th>
+					<th>Name Product</th>
+					<th>Price</th>
 					<th>Category</th>
 					<th>Image</th>
 					<th>Action</th>
@@ -27,7 +27,7 @@
 			<c:forEach var="prd" items="${list }" >
 				<tr class="odd gradeX">
 					
-					<td>${prd.getName_Prd() }"</td>
+					<td>${prd.getName_Prd() }</td>
 					<td>${prd.getPrice_Prd() }</td>
 					<td>Internet Explorer 4.0</td>
 					<c:forEach var="type" items="${type }" >

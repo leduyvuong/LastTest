@@ -1,6 +1,8 @@
 package com.jsp.shopaoquan.DAO;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -40,7 +42,7 @@ public class orderDAO {
 		Session session = sessionFactory.getCurrentSession();
 		session.remove(ord);
 	}
-	public List<orderr> findAll(int month){
+	public List<orderr> findM(int month){
 		Session session = sessionFactory.getCurrentSession();
 		Query query =session.createQuery("From orderr o where month(o.date_of_sale)=:month order   by date(o.date_of_sale) asc"); 
 		query.setParameter("month", month);
@@ -50,19 +52,25 @@ public class orderDAO {
 		LocalDate day = LocalDate.now();
 		return day;
 	}
-	public List<orderr> findQA(int quarter){
-		Session session = sessionFactory.getCurrentSession();
-		if (quarter == 1) {
-			quarter = 4;
-		} else if (quarter == 2) {
-			quarter = 7;
-		} else if ( quarter == 3) {
-			quarter = 10;
-		} else {
-			quarter = 13;
+	public List<orderr> findAll(){
+		Session session = sessionFactory.getCurrentSession();		
+		return  session.createQuery("from orderr",orderr.class).getResultList();
+	}
+	public HashMap<Integer, Float> salesY(){
+		HashMap<Integer, Float> result = new HashMap<Integer, Float>();
+		for (int i = 1; i <= 12; i ++) {
+			List<orderr> list = findM(i);
+			float sub = 0;
+			for (orderr or : list) {
+				sub += or.getTotal();
+			}
+			result.put(i, sub);
 		}
-		Query query =session.createQuery("From orderr o where month(o.date_of_sale)<:quarter order   by date(o.date_of_sale) asc"); 
-		query.setParameter("quarter", quarter);
-		return  query.getResultList();
+		
+		return result;
+	}
+	public String formatVND(float price) {
+		DecimalFormat formatPrice = new DecimalFormat("###,###,###");
+		return formatPrice.format(price) +" đ";
 	}
 }

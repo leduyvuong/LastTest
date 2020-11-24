@@ -53,7 +53,7 @@
         </div>
         </c:if>
         <c:if test="${listOr.size() == 0 }">
-        	<h1>Chưa có mặt hàng nào đã đặt!</h1>
+        	<h1 style="height: 200px;">Chưa có mặt hàng nào đã đặt!</h1>
         </c:if>
     </div>
 
