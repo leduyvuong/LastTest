@@ -20,7 +20,7 @@
                         <label>Name</label>
                     </td>
                     <td>
-                        <input type="text" name="name" placeholder="Enter Product Name..." class="medium" />
+                        <input type="text" name="name" placeholder="Enter Product Name..." class="medium"  required=true/>
                     </td>
                 </tr>				
 				
@@ -29,7 +29,7 @@
                         <label>Description</label>
                     </td>
                     <td>
-                        <textarea class="tinymce" name="descrip"></textarea>
+                        <textarea class="tinymce" name="descrip"  required=true></textarea>
                     </td>
                 </tr>
 				<tr>
@@ -37,10 +37,17 @@
                         <label>Price</label>
                     </td>
                     <td>
-                        <input type="text" name="price" placeholder="Enter Price..." class="medium" />
+                        <input type="text" name="price" placeholder="Enter Price..." class="medium"  required=true/>
                     </td>
                 </tr>
-            
+            	<tr>
+                    <td>
+                        <label>Original Price</label>
+                    </td>
+                    <td>
+                        <input type="text" name="orgPrice" placeholder="Enter Original Price..." class="medium" required=true />
+                    </td>
+                </tr>	
                 <tr>
                     <td>
                         <label>Upload Image</label>
@@ -69,7 +76,7 @@
 				<tr>
                     <td></td>
                     <td>
-                        <input type="submit" name="submit" Value="Save" />
+                        <input type="submit" name="submit" Value="Save"  required=true/>
                     </td>
                 </tr>
             </table>

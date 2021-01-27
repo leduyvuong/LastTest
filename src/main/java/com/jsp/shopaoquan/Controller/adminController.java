@@ -84,7 +84,7 @@ public class adminController {
 	@RequestMapping("/add")
 	public String add(@ModelAttribute("product")product prd, Model model, @RequestParam("descrip") String decrip,
 			@RequestParam("name")String name, HttpServletRequest request,
-						@RequestParam("price")float price,MyFile myFile) {
+						@RequestParam("price")float price,@RequestParam("orgPrice")float orgPrice,MyFile myFile) {
 		String fileName ="";
 		try {
 			MultipartFile multipartFile = myFile.getMultipartFile();
@@ -101,7 +101,7 @@ public class adminController {
 		System.out.println(prd.getId_type());
 		System.out.println(decrip);
 		model.addAttribute("image",fileName);
-		product newPrd = new product(name,price,fileName,prd.getId_type());
+		product newPrd = new product(name,price,fileName,orgPrice,prd.getId_type());
 		productService.save(newPrd);
 		return "redirect:/productList";
 	}

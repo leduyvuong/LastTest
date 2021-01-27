@@ -19,7 +19,7 @@
 				<tr>
 					<th>Name Product</th>
 					<th>Price</th>
-					<th>Category</th>
+					<th>Orignal Price</th>
 					<th>Image</th>
 					<th>Action</th>
 				</tr>
@@ -29,7 +29,7 @@
 					
 					<td>${prd.getName_Prd() }</td>
 					<td>${prd.getPrice_Prd() }</td>
-					<td>Internet Explorer 4.0</td>
+					<td>${prd.getOriginal_price() }</td>
 					<c:forEach var="type" items="${type }" >
 						<c:if test="${ prd.getId_type()==type.getId_prd_type()}">
 							<td>${type.getName_prd_type() }</td>

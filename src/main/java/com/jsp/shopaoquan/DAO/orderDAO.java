@@ -44,7 +44,7 @@ public class orderDAO {
 	}
 	public List<orderr> findM(int month){
 		Session session = sessionFactory.getCurrentSession();
-		Query query =session.createQuery("From orderr o where month(o.date_of_sale)=:month order   by date(o.date_of_sale) asc"); 
+		Query query =session.createQuery("From orderr o where month(o.date_of_sale)=:month order  by date(o.date_of_sale) asc"); 
 		query.setParameter("month", month);
 		return query.getResultList();
 	}

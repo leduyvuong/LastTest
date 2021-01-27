@@ -19,6 +19,8 @@ public class orderr {
 	private int id_order;
 	@Column(name = "total")
 	private float total;
+	@Column(name = "original_total")
+	private float original_total;
 	@Column(name = "date_of_sale")
 	private LocalDate date_of_sale;
 	@Column(name = "name_customer")
@@ -28,6 +30,15 @@ public class orderr {
 	public int getId_order() {
 		return id_order;
 	}
+	
+	public float getOriginal_total() {
+		return original_total;
+	}
+
+	public void setOriginal_total(float original_total) {
+		this.original_total = original_total;
+	}
+
 	public void setId_order(int id_order) {
 		this.id_order = id_order;
 	}
@@ -62,14 +73,18 @@ public class orderr {
 		DecimalFormat formatPrice = new DecimalFormat("###,###,###");
 		return formatPrice.format(price) +" đ";
 	}
-	public orderr(int id_order, float total, LocalDate date_of_sale, String name_customer, String description) {
+	
+	public orderr(int id_order, float total, float original_total, LocalDate date_of_sale, String name_customer,
+			String description) {
 		super();
 		this.id_order = id_order;
 		this.total = total;
+		this.original_total = original_total;
 		this.date_of_sale = date_of_sale;
 		this.name_customer = name_customer;
 		this.description = description;
 	}
+
 	public orderr() {
 		
 	}

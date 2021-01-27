@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jsp.shopaoquan.Entity.order_detail;
+import com.jsp.shopaoquan.Service.productService;
 
 
 
@@ -22,6 +23,8 @@ import com.jsp.shopaoquan.Entity.order_detail;
 public class orderDetailDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
+	@Autowired
+	private productService productService;
 	public void save(final order_detail ord) {		
 		Session session = sessionFactory.getCurrentSession();
 		session.save(ord);
@@ -55,6 +58,13 @@ public class orderDetailDAO {
 		float subTotal = 0;
 		for(int i = 0;i < list.size(); i++) {
 			subTotal += list.get(i).getTotal();
+		}
+		return subTotal;
+	}
+	public float getORSubTotal(List<order_detail> list) {
+		float subTotal = 0;
+		for(int i = 0;i < list.size(); i++) {
+			subTotal += productService.findByID(list.get(i).getName_prd()).getOriginal_price();
 		}
 		return subTotal;
 	}

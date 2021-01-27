@@ -45,4 +45,7 @@ public class orderDetailService {
 	public float getSubTotal(List<order_detail> list) {
 		return orderDetailDAO.getSubTotal(list);
 	}
+	public float getORSubTotal(List<order_detail> list) {
+		return orderDetailDAO.getORSubTotal(list);
+	}
 }

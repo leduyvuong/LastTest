@@ -42,7 +42,7 @@
                         <input name="pass" type="password" placeholder="Password ">
                         <input type="checkbox" class="checkBox">Remember Session</input>
                         <button type="submit" class="btn ">Login</button>                        
-                        <a href=" ">Forgot Password</a>
+                        <a href="forgetP">Forgot Password</a>
                         <a class="btn"  href="https://www.facebook.com/dialog/oauth?client_id=923149301514261&redirect_uri=http://localhost:8080/com.jsp.shopaoquan/login-facebook">
 							Login with Facebook
 						</a>

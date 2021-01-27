@@ -36,13 +36,14 @@
 	    <property name="dataSource" ref="dataSource"></property>
 	    <property name="packagesToScan" value="com.jsp.shopaoquan.Entity" />
 	    <property name="hibernateProperties" value="classpath:hibernate.properties" />
+	    
 	  </bean>
 	
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	<mvc:annotation-driven enable-matrix-variables="true"></mvc:annotation-driven>
 	<bean id="multipartResolver"
-    class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-    <property name="maxUploadSize" value="268435456" />
-  </bean>
+	    class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	    <property name="maxUploadSize" value="268435456" />
+  	</bean>
 	
 </beans>

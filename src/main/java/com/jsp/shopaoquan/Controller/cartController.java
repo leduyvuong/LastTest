@@ -96,11 +96,12 @@ public class cartController {
 		session.setAttribute("session", cusS);
 		List<order_detail> ord = orderDetailService.findAll();
 		String descrip = orderService.getDecrip(ord);
-		float subTotal=orderDetailService.getSubTotal(ord);		
+		float subTotal=orderDetailService.getSubTotal(ord);	
+		float subOR = orderDetailService.getORSubTotal(ord);
 		System.out.println(descrip);
 		customer cus= (customer)session.getAttribute("session");
 		orderDetailService.clearTable(cus.getName_customer());
-		orderr report = new orderr(orderService.getRandomID(), subTotal, orderService.getDay(), cus.getName_customer(),descrip);
+		orderr report = new orderr(orderService.getRandomID(), subTotal, subOR, orderService.getDay(), cus.getName_customer(),descrip);
 		orderService.save(report);
 		model.addAttribute("ord", ord);
 		return "redirect:/";
