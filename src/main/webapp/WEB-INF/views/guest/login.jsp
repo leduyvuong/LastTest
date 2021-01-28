@@ -43,10 +43,10 @@
                         <input type="checkbox" class="checkBox">Remember Session</input>
                         <button type="submit" class="btn ">Login</button>                        
                         <a href="forgetP">Forgot Password</a>
-                        <a class="btn"  href="https://www.facebook.com/dialog/oauth?client_id=923149301514261&redirect_uri=http://localhost:8080/com.jsp.shopaoquan/login-facebook">
+                        <a class="btn"  href="https://www.facebook.com/dialog/oauth?client_id=923149301514261&redirect_uri=https://brandclothes.herokuapp.com/login-facebook">
 							Login with Facebook
 						</a>
-	                    <a class="btn"  href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/com.jsp.shopaoquan/login-google&response_type=code
+	                    <a class="btn"  href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=https://brandclothes.herokuapp.com/login-google&response_type=code
 	    							&client_id=894453835091-ngnssakc3q9n2dnj6qv1h950o1m7d21k.apps.googleusercontent.com&approval_prompt=force">
 	    						Login with Gmail
 	    				</a> 
