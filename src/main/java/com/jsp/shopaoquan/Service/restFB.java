@@ -20,7 +20,7 @@ import com.restfb.types.User;
 public class restFB {
 	public static String FACEBOOK_APP_ID = "923149301514261";
 	public static String FACEBOOK_APP_SECRET = "f1f1eb262d8006d96823b3f8c2d469d0";
-	public static String FACEBOOK_REDIRECT_URL = "http://localhost:8080/com.jsp.shopaoquan/login-facebook";
+	public static String FACEBOOK_REDIRECT_URL = "https://brandclothes.herokuapp.com/login-facebook";
 	public static String FACEBOOK_LINK_GET_TOKEN = "https://graph.facebook.com/oauth/access_token?client_id=%s&client_secret=%s&redirect_uri=%s&code=%s";
 	public String getToken(final String code) throws ClientProtocolException, IOException {
 	    String link = String.format(FACEBOOK_LINK_GET_TOKEN, FACEBOOK_APP_ID, FACEBOOK_APP_SECRET, FACEBOOK_REDIRECT_URL, code);
@@ -38,6 +38,7 @@ public class restFB {
 	  public customer buildUser(User user) {
 		  System.out.println(user.getId()+" "+ user.getName()+" facebook@gmail.com"+" "+11111+" "+user.getId()+" "+user.getName());
 	    customer userDetail =  new customer(user.getId(),user.getLocale(),"facebook@gmail.com",11111,user.getId(),user.getName());
+	    System.out.println(user.getEmail());
 	    return userDetail;
 	  }
 
