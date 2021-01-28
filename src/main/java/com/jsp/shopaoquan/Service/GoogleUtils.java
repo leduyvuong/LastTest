@@ -15,7 +15,7 @@ import com.jsp.shopaoquan.Entity.customer;
 public class GoogleUtils {
 	public static String GOOGLE_CLIENT_ID = "894453835091-ngnssakc3q9n2dnj6qv1h950o1m7d21k.apps.googleusercontent.com";
 	  public static String GOOGLE_CLIENT_SECRET = "Y0K0FuorYiBpJBnzUvLyMZ0w";
-	  public static String GOOGLE_REDIRECT_URI = "http://localhost:8080/com.jsp.shopaoquan/login-google";
+	  public static String GOOGLE_REDIRECT_URI = "https://brandclothes.herokuapp.com/login-google";
 	  public static String GOOGLE_LINK_GET_TOKEN = "https://accounts.google.com/o/oauth2/token";
 	  public static String GOOGLE_LINK_GET_USER_INFO = "https://www.googleapis.com/oauth2/v1/userinfo?access_token=";
 	  public static String GOOGLE_GRANT_TYPE = "authorization_code";
