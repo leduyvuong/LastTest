@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="aa" method="post" enctype="multipart/form-data">
+	<form action="saveIMG" method="post" enctype="multipart/form-data">
 		<input type="file" name="file">
 	         <input type="submit">
 	     

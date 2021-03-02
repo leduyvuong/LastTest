@@ -202,6 +202,22 @@ public class adminController {
 		
 		return "guest/img";
 	}
+	@RequestMapping("/saveIMG")
+	public String saveIMG(Model model,@RequestParam("file")CommonsMultipartFile[] fileUpload) {
+		if (fileUpload != null) {
+			if (fileUpload != null && fileUpload.length > 0) {
+				for ( CommonsMultipartFile aFile : fileUpload) {
+					images img = new images(aFile.getOriginalFilename(), aFile.getBytes());
+					System.out.println(img.getImg());
+					imgService.save(img);
+				}
+			}
+		}else {
+			String err = "ERRORRR";
+			model.addAttribute("err",err);
+		}
+		return "redirect:/aa";
+	}
 	@RequestMapping("/up")
 	public String up() {
 		return "guest/up";
