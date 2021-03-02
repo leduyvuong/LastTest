@@ -1,28 +1,38 @@
 package com.jsp.shopaoquan.Controller;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.InputStream;
+
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.jsp.shopaoquan.Entity.MyFile;
 import com.jsp.shopaoquan.Entity.customer;
+import com.jsp.shopaoquan.Entity.images;
 import com.jsp.shopaoquan.Entity.orderr;
 import com.jsp.shopaoquan.Entity.product;
 import com.jsp.shopaoquan.Entity.type;
 import com.jsp.shopaoquan.Service.TypeService;
+import com.jsp.shopaoquan.Service.imgService;
 import com.jsp.shopaoquan.Service.orderService;
 import com.jsp.shopaoquan.Service.productService;
 
@@ -34,6 +44,8 @@ public class adminController {
 	private TypeService TypeService;
 	@Autowired
 	private orderService orderService;
+	@Autowired
+	private imgService imgService;
 	@RequestMapping("/admin")
 	public String admin(HttpSession session, HttpServletRequest request) {
 		customer cus = (customer)session.getAttribute("session");
@@ -91,15 +103,14 @@ public class adminController {
 			fileName = multipartFile.getOriginalFilename();
 			String path = request.getServletContext().getRealPath("/resources/img/products");
 			File file = new File(request.getServletContext().getRealPath("/resources/img/products"),fileName);
-			System.out.println(path);
+			
 			multipartFile.transferTo(file);
-			System.out.println(fileName);
+			
 			
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		System.out.println(prd.getId_type());
-		System.out.println(decrip);
+		
 		model.addAttribute("image",fileName);
 		product newPrd = new product(name,price,fileName,orgPrice,prd.getId_type());
 		productService.save(newPrd);
@@ -109,9 +120,7 @@ public class adminController {
 	public String update(@ModelAttribute("prd")product prd, @ModelAttribute("myFile")MyFile myFile, HttpServletRequest request,
 						@RequestParam("img")String img) {
 		String fileName ="";
-		System.out.println(prd.getName_Prd());
-		System.out.println(img);
-		System.out.println(prd.getPrice_Prd());
+		
 		
 		try {
 			MultipartFile multipartFile = myFile.getMultipartFile();
@@ -119,10 +128,10 @@ public class adminController {
 			
 			String path = request.getServletContext().getRealPath("/resources/img/products");
 			File file = new File(request.getServletContext().getRealPath("/resources/img/products"),fileName);
-			System.out.println(path);
+			
 			multipartFile.transferTo(file);
 			prd.setImg_Prd(fileName);
-			System.out.println(fileName);
+			
 			
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -174,5 +183,39 @@ public class adminController {
 		model.addAttribute("ord", or);
 		model.addAttribute("result", result);
 		return "admin/sales";
+	}
+	@RequestMapping("/aa")
+	public String aa(Model model/*,@RequestParam("file")CommonsMultipartFile[] fileUpload*/) {
+//		if (fileUpload == null) {
+//			if (fileUpload != null && fileUpload.length > 0) {
+//				for ( CommonsMultipartFile aFile : fileUpload) {
+//					images img = new images(aFile.getOriginalFilename(), aFile.getBytes());
+//					System.out.println(img.getImg());
+//					imgService.save(img);
+//				}
+//			}
+//		}
+		List<images> list = imgService.findAll();
+		
+		
+		model.addAttribute("list", list);
+		
+		return "guest/img";
+	}
+	@RequestMapping("/up")
+	public String up() {
+		return "guest/up";
+	}
+	@RequestMapping(value = "/Photo/{id}")
+	public void getStudentPhoto(HttpServletResponse response,@PathVariable("id") String id) throws Exception {
+		
+		response.setContentType("image/jpeg");
+		images img = imgService.find(id);
+		System.out.println(img.getImg());
+		
+		
+		
+		InputStream inputStream = new ByteArrayInputStream(img.getImg());
+		IOUtils.copy(inputStream, response.getOutputStream());
 	}
 }

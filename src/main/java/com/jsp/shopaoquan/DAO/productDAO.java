@@ -1,5 +1,10 @@
 package com.jsp.shopaoquan.DAO;
 
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -16,6 +21,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jsp.shopaoquan.Entity.product;
+
+import com.sun.mail.util.QEncoderStream;
 
 
 
@@ -80,6 +87,7 @@ public class productDAO {
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery("from product p where p.id_type= :type");
 		query.setParameter("type", name_prd);
+		
 		query.setFirstResult(start*8);
 		if(query.getResultList().size()-start*8<8) {
 			query.setMaxResults(query.getResultList().size()-start*8);
@@ -109,4 +117,5 @@ public class productDAO {
 		}
 		return query.getResultList();
 	}
+	
 }
