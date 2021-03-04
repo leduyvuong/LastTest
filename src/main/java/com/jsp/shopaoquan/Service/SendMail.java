@@ -38,13 +38,13 @@ public class SendMail {
 		    mailMessage.setSubject("Xác nhận đơn hàng");
 		    mailMessage.setText("Xin cảm ơn quý khách đã ủng hộ shop"
 		    		+ "Click vào đường link để xác nhận dưới : "
-		    		+ "http://localhost:8080/com.jsp.shopaoquan/payment?id="+name);
+		    		+ "https://brandclothes.herokuapp.com/payment?id="+name);
 		 
 		    // Step3: Send mail
 		    Transport transport = getMailSession.getTransport("smtp");
 		 
 		    // Thay your_gmail thành gmail của bạn, thay your_password thành mật khẩu gmail của bạn
-		    transport.connect("smtp.gmail.com", "firesoul0609@gmail.com", "Leduyvuong060899"); 
+		    transport.connect("smtp.gmail.com", "thaonganxinhdep1234@gmail.com", "Leduyvuong060899"); 
 		    transport.sendMessage(mailMessage, mailMessage.getAllRecipients());
 		    transport.close();
 		  }
@@ -76,7 +76,7 @@ public class SendMail {
 		    Transport transport = getMailSession.getTransport("smtp");
 		 
 		    // Thay your_gmail thành gmail của bạn, thay your_password thành mật khẩu gmail của bạn
-		    transport.connect("smtp.gmail.com", "firesoul0609@gmail.com", "Leduyvuong060899"); 
+		    transport.connect("smtp.gmail.com", "thaonganxinhdep1234@gmail.com", "Leduyvuong060899"); 
 		    transport.sendMessage(mailMessage, mailMessage.getAllRecipients());
 		    transport.close();
 		  }

@@ -185,16 +185,7 @@ public class adminController {
 		return "admin/sales";
 	}
 	@RequestMapping("/aa")
-	public String aa(Model model/*,@RequestParam("file")CommonsMultipartFile[] fileUpload*/) {
-//		if (fileUpload == null) {
-//			if (fileUpload != null && fileUpload.length > 0) {
-//				for ( CommonsMultipartFile aFile : fileUpload) {
-//					images img = new images(aFile.getOriginalFilename(), aFile.getBytes());
-//					System.out.println(img.getImg());
-//					imgService.save(img);
-//				}
-//			}
-//		}
+	public String aa(Model model) {
 		List<images> list = imgService.findAll();
 		
 		
@@ -227,6 +218,7 @@ public class adminController {
 		
 		response.setContentType("image/jpeg");
 		images img = imgService.find(id);
+		System.out.println(img.getImgname());
 		System.out.println(img.getImg());
 		
 		
