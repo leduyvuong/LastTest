@@ -79,9 +79,20 @@ public class cartController {
 		return "redirect:/cart";
 	}
 	@RequestMapping("/sendmail")
-	public String sendMail(Model model, @RequestParam("email")String email,HttpSession session) throws AddressException, MessagingException {
+	public String sendMail(Model model, @RequestParam("email")String email,HttpSession session)  {
 		customer cus = (customer)session.getAttribute("session");
-		sendMail.sendText(email,cus.getName_customer());
+		try {
+			sendMail.sendText(email,cus.getName_customer());
+		} catch (AddressException e) {
+			
+			
+			e.printStackTrace();
+			return "redirect:/";
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "redirect:/";
+		}
 	    return "guest/test";
 	}
 	@RequestMapping("/infor")
