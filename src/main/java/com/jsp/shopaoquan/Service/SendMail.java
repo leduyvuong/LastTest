@@ -21,7 +21,7 @@ public class SendMail {
 		 
 		    // Step1: setup Mail Server
 		    mailServerProperties = System.getProperties();
-		    mailServerProperties.put("mail.smtp.port", "587");
+		    mailServerProperties.put("mail.smtp.port", "25");
 		    mailServerProperties.put("mail.smtp.auth", "true");
 		    mailServerProperties.put("mail.smtp.starttls.enable", "true");
 		 
@@ -55,7 +55,7 @@ public class SendMail {
 		 
 		    // Step1: setup Mail Server
 		    mailServerProperties = System.getProperties();
-		    mailServerProperties.put("mail.smtp.port", "587");
+		    mailServerProperties.put("mail.smtp.port", "25");
 		    mailServerProperties.put("mail.smtp.auth", "true");
 		    mailServerProperties.put("mail.smtp.starttls.enable", "true");
 		 
